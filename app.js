@@ -8,7 +8,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const path = require('path');
 
-const PORT = 7860
+const PORT = 5000
 //app.use('/', express.static(__dirname + '/index.html'));
 // default options
 app.use(fileUpload());
@@ -22,7 +22,7 @@ app.get('/ping', function(req, res) {
 
 
 app.post('/upload', function(req, res) {
-  let sampleFile;
+  let Files;
   let uploadPath;
 
   if (Object.keys(req.files).length == 0) {
@@ -32,23 +32,28 @@ app.post('/upload', function(req, res) {
 
   console.log('req.files >>>', req.files); // eslint-disable-line
 
-  sampleFile = req.files.sampleFile;
+  Files = req.files.sampleFile;
 
-  uploadPath = 'uploads/' + sampleFile.name;
+  uploadPath = 'uploads/' + Files.name;
 
-  sampleFile.mv(uploadPath, function(err) {
+  Files.mv(uploadPath, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
-
+/*
     res.send(`<html><body>
       <h1>Upload page</h1>
       <div class="upload-result">
           File uploaded to ${uploadPath}
       </div>
     </body></html>`);
+    
+*/
+    
+    res.json({ fileName: file.name, filePath: uploadPath });
   });
 });
+    
 
 app.listen(PORT, function() {
   console.log('Express server listening on port ', PORT); // eslint-disable-line
