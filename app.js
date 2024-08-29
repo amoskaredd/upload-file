@@ -32,7 +32,7 @@ app.post('/upload', function(req, res) {
 
   console.log('req.files >>>', req.files); // eslint-disable-line
 
-  Files = req.files.sampleFile;
+  Files = req.files.Files;
 
   uploadPath = 'uploads/' + Files.name;
 
@@ -50,7 +50,7 @@ app.post('/upload', function(req, res) {
     
 */
     
-    res.json({ fileName: file.name, filePath: uploadPath });
+    res.json({ fileName: Files.name, filePath: uploadPath });
   });
 });
     
