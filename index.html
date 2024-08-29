@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Simple File Uploader: node/express</title>
+  </head>
+	<body>
+    <h1>Try to upload files</h1>
+    <div>
+      <form ref='uploadForm' 
+        id='uploadForm' 
+        action='/upload' 
+        method='post' 
+        encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+      </form>		
+    </div>
+	</body>
+</html>
